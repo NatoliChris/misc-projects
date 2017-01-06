@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pros vs Cons</title>
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+		<link rel='stylesheet' type='text/css' href='css/style.css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="scripts/js.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<header id="main-title">Pros vs Cons</header>
+			<section id="list-body">
+				<header>
+					<div>Pros</div>
+					<div>Cons</div>
+				</header>
+				<div class="lists-container">
+					<section>
+						<div id="pros-list">
+						</div>
+						<input type="text" class="adds" id="pros-add" placeholder="Enter new item">
+					</section>
+					<section>
+						<div id="cons-list">
+						</div>
+						<input type="text" class="adds" id="cons-add" placeholder="Enter new item">
+					</section>
+					<div class="clear"></div>
+				</div>
+			</section>
+			<div id="summary" class="fadeup">Summary</div>
+		</div>
+		<div id="summary-modal">
+			<div id="summary-close">x</div>
+			<header>Summary</header>
+			<section>
+				<div id="graphs">
+					<div class="bar pros-bar"></div>
+
+					<div class="bar cons-bar"></div>
+				</div>
+			</section>
+		</div>
+		<div id="overlay"></div>
+	</body>
+</html>
