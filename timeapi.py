@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello, World"
+    return "Welcome to the Time API"
 
 @app.route('/api/time', methods=['GET'])
 def get_time():
