@@ -66,4 +66,30 @@ $(document).ready(function(){
 		$('#overlay').fadeIn();
 	});
 
+	var last = 0;
+
+	$('#tiles').click(function() {
+		$('.inner-tile').toggleClass('tile-invert');
+		if(last == 0) {
+			$('.alive .page-container').hide();
+			$('.alive').animate({'width': '450px', 'height': '675px'}, function(){
+				$(this).removeClass('alive').addClass('tiled').addClass('last-alive');
+			});
+			$('body').css({'padding': '20px'});
+			last = 1;
+		} else {
+			$('.last-alive').removeClass('tiled').addClass('alive').removeClass('last-alive').animate({'width': window.innerWidth, 'height': 'auto'}, function(){
+				$('.alive .page-container').fadeIn();
+			});
+			$('body').css({'padding': '0px'});
+			last = 0;
+		}
+	});
+
+
+	$(document).on('click', '.tiled', function(){
+		$('.last-active').removeClass('last-active');
+		$(this).addClass('.last-active');
+		$('#tiles').trigger('click');
+	});
 });
