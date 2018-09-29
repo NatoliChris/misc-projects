@@ -17,7 +17,7 @@ for pkg in "$@"
 do
     echo "[$pkg]"
     # google-chrome-stable --incognito "https://google.com.au/search?q=$pkg"
-    APKG=`echo "$pkg" | awk '!/^lib*/' | awk '{ split($0,a,/\-[0-9]/); print a[1]}'`
+    APKG=`echo "$pkg" | awk '!/^lib.*/' | awk '{ split($0,a,/\-[0-9]/); print a[1]}'`
     echo $APKG
     if [[ $APKG == "" ]]; then
         continue
