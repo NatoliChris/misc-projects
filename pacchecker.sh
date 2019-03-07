@@ -15,17 +15,18 @@ RANGE=6
 
 for pkg in "$@"
 do
-    echo "[$pkg]"
-    # google-chrome-stable --incognito "https://google.com.au/search?q=$pkg"
-    APKG=`echo "$pkg" | awk '!/^lib.*/' | awk '{ split($0,a,/\-[0-9]/); print a[1]}'`
-    echo $APKG
-    if [[ $APKG == "" ]]; then
-        continue
+    if [[ $pkg == *"/"* ]]; then
+        APKG=`echo "$pkg" | awk '{ split($0, a, /\//); print a[2]}' | awk '!/^lib.*/'`
+        if [[ $APKG == "" ]]; then
+            continue
+        fi
+        echo "[$APKG]"
+
+        google-chrome-stable --incognito "https://www.archlinux.org/packages/?q=$APKG" &
+        # Sleep for a random time between 2 and 6 seconds to avoid spamming
+        number=$RANDOM
+        let "number %= $RANGE"
+        let number+=2
+        sleep $number
     fi
-    google-chrome-stable --incognito "https://www.archlinux.org/packages/?q=$APKG"
-    # Sleep for a random time between 2 and 6 seconds to avoid spamming
-    number=$RANDOM
-    let "number %= $RANGE"
-    let number+=2
-    sleep $number
 done
